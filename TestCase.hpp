@@ -12,12 +12,12 @@ public:
   
 string name;
 ostream& current_err;
-int Failed_tests=0;;
-int Passed_tests=0;;
-int All=0;;
+int Failed_tests;;
+int Passed_tests;;
+int All;
   
 	
-TestCase(string s, ostream& other):name(s),current_err(other)/*,Passed_tests(0),Failed_tests(0),All(0)*/ {}
+TestCase(string s, ostream& other):name(s),current_err(other),Passed_tests(0),Failed_tests(0),All(0) {}
 		
     
 template<typename T> TestCase& check_equal(T x,T y) {
