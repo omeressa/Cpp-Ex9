@@ -25,7 +25,7 @@ template<typename T> TestCase& check_equal(T x,T y) {
   else {
        All++;
        Failed_tests++;
-       cout<<name<<": Failure in test #"<< All <<" "<< x <<" "<<"should equal"<<" "<< y <<" !"<<endl;
+       current_err<<name<<": Failure in test #"<< All <<" "<< x <<" "<<"should equal"<<" "<< y <<" !"<<endl;
       }		
  return *this;
 }
@@ -37,7 +37,7 @@ template<typename T> TestCase& check_different(T x,T y) {
     else {
          All++;
 	 Failed_tests++;
-	cout<<name<<": Failure in test #"<< All<<" "<<x<<" "<<"is equal"<<" "<<y<<" !"<<endl;
+	current_err<<name<<": Failure in test #"<< All<<" "<<x<<" "<<"is equal"<<" "<<y<<" !"<<endl;
         }		
  return *this;	
 }
@@ -51,7 +51,7 @@ template<typename T> TestCase& check_output(T x, string other) {
     else {
          All++;
 	 Failed_tests++;
-	 cout<<name<<": Failure in test #"<< All << " " <<"string value should be"<<" "<<other<<" "
+	 current_err<<name<<": Failure in test #"<< All << " " <<"string value should be"<<" "<<other<<" "
          <<"but is"<<" "<<in.str()<<endl;
 	}		
 return *this;
@@ -64,14 +64,14 @@ template<typename X,typename Y,typename Z> TestCase& check_function(Z function, 
        else {
             All++;
 	    Failed_tests++;
-	    cout<<name<<": Failure in test #"<< All <<" "<<"Function should return"<<" "<<res<<" "<<"but returned"<<" "
+	    current_err<<name<<": Failure in test #"<< All <<" "<<"Function should return"<<" "<<res<<" "<<"but returned"<<" "
             <<(*function)(arg)<<"!"<<endl;
            }		
   return *this;	
 }  
 TestCase& print() {
 	current_err<<name<<": "<<Failed_tests<<" "<<"failed"<<", "<<Passed_tests<<" "<<"passed"<<", "<<All<<" "<<"total."<<endl;
-	cout <<"---"<<endl;
+	current_err <<"---"<<endl;
 	return *this;
   }
 };
